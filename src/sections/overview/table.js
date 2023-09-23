@@ -5,7 +5,7 @@ import {
   Card,
   Typography,
   Divider,
-  Table,
+  Table as TableMUI,
   TableBody,
   TableCell,
   TableHead,
@@ -19,7 +19,7 @@ import estadoOptions from "../../assets/options_estado.json";
 import tipoOptions from "../../assets/options_tipo.json";
 import Selector from "../../components/selector";
 
-export const OverviewLatestOrders = (props) => {
+export const Table = (props) => {
   const { data = [], sx } = props;
   const initFilters = {
     ano: "",
@@ -107,7 +107,7 @@ export const OverviewLatestOrders = (props) => {
       <Card sx={{ ...sx, borderRadius: 1 }}>
         <Scrollbar sx={{ flexGrow: 1 }}>
           <Box sx={{ minWidth: 800, width: "100%" }}>
-            <Table>
+            <TableMUI>
               <TableHead>
                 <TableRow>
                   <TableCell>Ano</TableCell>
@@ -133,7 +133,7 @@ export const OverviewLatestOrders = (props) => {
                   );
                 })}
               </TableBody>
-            </Table>
+            </TableMUI>
             <Box sx={{ textAlign: "center", margin: 2 }}>
               {filters.perPage < filteredData.length && (
                 <Button variant="contained" color="primary" onClick={handleLoadMore}>
@@ -149,7 +149,7 @@ export const OverviewLatestOrders = (props) => {
   );
 };
 
-OverviewLatestOrders.propTypes = {
+Table.propTypes = {
   data: PropTypes.array,
   sx: PropTypes.object,
 };

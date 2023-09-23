@@ -1,7 +1,12 @@
 import Head from "next/head";
+import { subHours, subDays } from "date-fns";
 import { Box, Container, Unstable_Grid2 as Grid } from "@mui/material";
 import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
-import { OverviewLatestOrders } from "src/sections/overview/overview-latest-orders";
+import { Table } from "src/sections/overview/table";
+import { OverviewBudget } from "src/sections/overview/overview-budget";
+import { OverviewSales } from "src/sections/overview/overview-sales";
+import { OverviewTraffic } from "src/sections/overview/overview-traffic";
+import { OverviewLatestProducts } from "src/sections/overview/overview-latest-products";
 import data from "../assets/data.json";
 
 const now = new Date();
@@ -50,7 +55,7 @@ const Page = () => (
       </Grid> */}
       <Container maxWidth="xl">
         <Grid container spacing={3}>
-          {/* <Grid xs={12} sm={6} lg={4}>
+          <Grid xs={12} sm={6} lg={4}>
             <OverviewBudget
               title={cardsData.socialAssistence.title}
               value={cardsData.socialAssistence.value}
@@ -133,9 +138,9 @@ const Page = () => (
               ]}
               sx={{ height: "100%" }}
             />
-          </Grid> */}
+          </Grid>
           <Grid xs={12} md={12} lg={12}>
-            <OverviewLatestOrders data={data} />
+            <Table data={data} />
           </Grid>
         </Grid>
       </Container>
