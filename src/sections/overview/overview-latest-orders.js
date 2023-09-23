@@ -73,75 +73,79 @@ export const OverviewLatestOrders = (props) => {
   };
 
   return (
-    <Card sx={sx}>
-      <Typography variant="h3" mt={3} ml={1} mb={3}>
+    <>
+      <Typography variant="h3" mb={3}>
         {"Tabela de despesas".toUpperCase()}
       </Typography>
-      <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-        <Selector
-          placeholder="Ano"
-          options={anoOptions}
-          onChange={handleFiltersChange("ano")}
-          value={filters.ano}
-        />
-        <Selector
-          placeholder="Estado"
-          options={estadoOptions}
-          onChange={handleFiltersChange("estado")}
-          value={filters.estado}
-        />
-        <Selector
-          placeholder="Tipo de despesa"
-          options={tipoOptions}
-          onChange={handleFiltersChange("tipo")}
-          value={filters.tipo}
-        />
-        <Button variant="text" onClick={clearFilters} sx={{ height: 38, m: 1 }} color="inherit">
-          Limpar
-        </Button>
-      </Box>
-      <Scrollbar sx={{ flexGrow: 1 }}>
-        <Box sx={{ minWidth: 800, width: "100%" }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Ano</TableCell>
-                <TableCell>Instituição</TableCell>
-                <TableCell>Estado</TableCell>
-                <TableCell>População</TableCell>
-                <TableCell>Tipo</TableCell>
-                <TableCell>Categoria</TableCell>
-                <TableCell>Valor</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {filteredData.slice(0, filters.perPage).map((row, index) => {
-                const categoria = `${row.cod_conta ?? ""} ${row.nome_conta ?? ""}`;
-                return (
-                  <TableRow hover key={index}>
-                    <TableCell>{row.ano}</TableCell>
-                    <TableCell>{row.instituicao}</TableCell>
-                    <TableCell>{row.estado}</TableCell>
-                    <TableCell>{row.populacao_total}</TableCell>
-                    <TableCell>{row.tipo}</TableCell>
-                    <TableCell>{categoria}</TableCell>
-                    <TableCell>{formatCurrency(String(row.valor))}</TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-          <Box sx={{ textAlign: "center", margin: 2 }}>
-            {filters.perPage < filteredData.length && (
-              <Button variant="contained" color="primary" onClick={handleLoadMore}>
-                <PlusSmallIcon />
-              </Button>
-            )}
-          </Box>
+
+      <Card sx={{ mb: 3, p: 1, borderRadius: 1 }}>
+        <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+          <Selector
+            placeholder="Ano"
+            options={anoOptions}
+            onChange={handleFiltersChange("ano")}
+            value={filters.ano}
+          />
+          <Selector
+            placeholder="Estado"
+            options={estadoOptions}
+            onChange={handleFiltersChange("estado")}
+            value={filters.estado}
+          />
+          <Selector
+            placeholder="Tipo de despesa"
+            options={tipoOptions}
+            onChange={handleFiltersChange("tipo")}
+            value={filters.tipo}
+          />
+          <Button variant="text" onClick={clearFilters} sx={{ height: 38, m: 1 }} color="inherit">
+            Limpar
+          </Button>
         </Box>
-      </Scrollbar>
-      <Divider />
-    </Card>
+      </Card>
+
+      <Card sx={{ ...sx, borderRadius: 1 }}>
+        <Scrollbar sx={{ flexGrow: 1 }}>
+          <Box sx={{ minWidth: 800, width: "100%" }}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Ano</TableCell>
+                  <TableCell>Instituição</TableCell>
+                  <TableCell>Estado</TableCell>
+                  <TableCell>Tipo</TableCell>
+                  <TableCell>Categoria</TableCell>
+                  <TableCell>Valor</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {filteredData.slice(0, filters.perPage).map((row, index) => {
+                  const categoria = `${row.cod_conta ?? ""} ${row.nome_conta ?? ""}`;
+                  return (
+                    <TableRow hover key={index}>
+                      <TableCell>{row.ano}</TableCell>
+                      <TableCell>{row.instituicao}</TableCell>
+                      <TableCell>{row.estado}</TableCell>
+                      <TableCell>{row.tipo}</TableCell>
+                      <TableCell>{categoria}</TableCell>
+                      <TableCell>{formatCurrency(String(row.valor))}</TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+            <Box sx={{ textAlign: "center", margin: 2 }}>
+              {filters.perPage < filteredData.length && (
+                <Button variant="contained" color="primary" onClick={handleLoadMore}>
+                  <PlusSmallIcon />
+                </Button>
+              )}
+            </Box>
+          </Box>
+        </Scrollbar>
+        <Divider />
+      </Card>
+    </>
   );
 };
 

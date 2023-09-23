@@ -33,6 +33,7 @@ const Page = () => (
       sx={{
         flexGrow: 1,
         py: 8,
+        backgroundColor: "#f3f3f4",
       }}
     >
       {/* <Grid container spacing={3}>
@@ -134,7 +135,7 @@ const Page = () => (
             />
           </Grid> */}
           <Grid xs={12} md={12} lg={12}>
-            <OverviewLatestOrders data={data} sx={{ height: "100%" }} />
+            <OverviewLatestOrders data={data} />
           </Grid>
         </Grid>
       </Container>
