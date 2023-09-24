@@ -38,6 +38,15 @@ export const items = [
     ),
   },
   {
+    title: "Métricas",
+    path: "/metrics",
+    icon: (
+      <SvgIcon fontSize="small">
+        <ChartBarIcon />
+      </SvgIcon>
+    ),
+  },
+  {
     title: "Tabela",
     path: "/table",
     icon: (

@@ -22,7 +22,6 @@ export default function Selector(props) {
     const {
       target: { value },
     } = event;
-    console.log(value);
     onChange(value);
   };
 
