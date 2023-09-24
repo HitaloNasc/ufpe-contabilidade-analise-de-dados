@@ -6,6 +6,7 @@ import { alpha, useTheme } from "@mui/material/styles";
 import { Chart } from "src/components/chart";
 import Selector from "../../components/selector";
 import estadoOptions from "../../assets/options_estado.json";
+import anoOptions from "../../assets/options_ano.json";
 
 const formatCurrency = (value) => {
   return value.toLocaleString("pt-BR", {
@@ -73,7 +74,7 @@ const useChartOptions = () => {
         color: theme.palette.divider,
         show: true,
       },
-      categories: ["2018", "2019", "2020", "2021"],
+      categories: [...estadoOptions],
       labels: {
         offsetY: 1,
         style: {
@@ -93,7 +94,7 @@ const useChartOptions = () => {
   };
 };
 
-export const AnnualExpenses = (props) => {
+export const ExpensesByState = (props) => {
   const { data = [], sx } = props;
 
   const chartOptions = useChartOptions();
@@ -104,7 +105,7 @@ export const AnnualExpenses = (props) => {
   }
 
   const initFilters = {
-    estado: "",
+    ano: "",
   };
   const [filters, setFilters] = useState(initFilters);
 
@@ -135,9 +136,9 @@ export const AnnualExpenses = (props) => {
     return applyFilters(data, filters);
   }, [data, filters]);
 
-  const filterData = (year, type, account) => {
+  const filterData = (state, type, account) => {
     return filteredData
-      .filter((row) => row.ano === year && row.tipo === type && row.cod_conta === account)
+      .filter((row) => row.estado === state && row.tipo === type && row.cod_conta === account)
       .map((row) => convertToNumber(row.valor))
       .reduce((acc, c) => acc + c, 0);
   };
@@ -145,103 +146,58 @@ export const AnnualExpenses = (props) => {
   const assistenciaSocial = [
     {
       name: "Despesas empenhadas",
-      data: [
-        filterData(2018, "Despesas Empenhadas", "08"),
-        filterData(2019, "Despesas Empenhadas", "08"),
-        filterData(2020, "Despesas Empenhadas", "08"),
-        filterData(2021, "Despesas Empenhadas", "08"),
-      ],
+      data: estadoOptions.map((state) => filterData(state, "Despesas Empenhadas", "08")),
     },
     {
       name: "Despesas liquidadas",
-      data: [
-        filterData(2018, "Despesas Liquidadas", "08"),
-        filterData(2019, "Despesas Liquidadas", "08"),
-        filterData(2020, "Despesas Liquidadas", "08"),
-        filterData(2021, "Despesas Liquidadas", "08"),
-      ],
+      data: estadoOptions.map((state) => filterData(state, "Despesas Liquidadas", "08")),
     },
     {
       name: "Despesas pagas",
-      data: [
-        filterData(2018, "Despesas Pagas", "08"),
-        filterData(2019, "Despesas Pagas", "08"),
-        filterData(2020, "Despesas Pagas", "08"),
-        filterData(2021, "Despesas Pagas", "08"),
-      ],
+      data: estadoOptions.map((state) => filterData(state, "Despesas Pagas", "08")),
     },
   ];
   const previdenciaSocial = [
     {
       name: "Despesas empenhadas",
-      data: [
-        filterData(2018, "Despesas Empenhadas", "09"),
-        filterData(2019, "Despesas Empenhadas", "09"),
-        filterData(2020, "Despesas Empenhadas", "09"),
-        filterData(2021, "Despesas Empenhadas", "09"),
-      ],
+      data: estadoOptions.map((state) => filterData(state, "Despesas Empenhadas", "09")),
     },
     {
       name: "Despesas liquidadas",
-      data: [
-        filterData(2018, "Despesas Liquidadas", "09"),
-        filterData(2019, "Despesas Liquidadas", "09"),
-        filterData(2020, "Despesas Liquidadas", "09"),
-        filterData(2021, "Despesas Liquidadas", "09"),
-      ],
+      data: estadoOptions.map((state) => filterData(state, "Despesas Liquidadas", "09")),
     },
     {
       name: "Despesas pagas",
-      data: [
-        filterData(2018, "Despesas Pagas", "09"),
-        filterData(2019, "Despesas Pagas", "09"),
-        filterData(2020, "Despesas Pagas", "09"),
-        filterData(2021, "Despesas Pagas", "09"),
-      ],
+      data: estadoOptions.map((state) => filterData(state, "Despesas Pagas", "09")),
     },
   ];
   const saude = [
     {
       name: "Despesas empenhadas",
-      data: [
-        filterData(2018, "Despesas Empenhadas", "10"),
-        filterData(2019, "Despesas Empenhadas", "10"),
-        filterData(2020, "Despesas Empenhadas", "10"),
-        filterData(2021, "Despesas Empenhadas", "10"),
-      ],
+      data: estadoOptions.map((state) => filterData(state, "Despesas Empenhadas", "10")),
     },
     {
       name: "Despesas liquidadas",
-      data: [
-        filterData(2018, "Despesas Liquidadas", "10"),
-        filterData(2019, "Despesas Liquidadas", "10"),
-        filterData(2020, "Despesas Liquidadas", "10"),
-        filterData(2021, "Despesas Liquidadas", "10"),
-      ],
+      data: estadoOptions.map((state) => filterData(state, "Despesas Liquidadas", "10")),
     },
     {
       name: "Despesas pagas",
-      data: [
-        filterData(2018, "Despesas Pagas", "10"),
-        filterData(2019, "Despesas Pagas", "10"),
-        filterData(2020, "Despesas Pagas", "10"),
-        filterData(2021, "Despesas Pagas", "10"),
-      ],
+      data: estadoOptions.map((state) => filterData(state, "Despesas Pagas", "10")),
     },
   ];
 
   return (
     <>
       <Typography variant="h3" mb={3}>
-        {"Despesas por ano".toUpperCase()}
+        {"Despesas por Estado".toUpperCase()}
       </Typography>
       <Card sx={{ mb: 3, p: 1, borderRadius: 1 }}>
         <Box sx={{ display: "flex", alignItems: "flex-end" }}>
           <Selector
-            placeholder="Estado"
-            options={estadoOptions}
-            onChange={handleFiltersChange("estado")}
-            value={filters.estado}
+            placeholder="Ano"
+            options={anoOptions}
+            onChange={handleFiltersChange("ano")}
+            value={filters.ano}
           />
           <Button variant="text" onClick={clearFilters} sx={{ height: 38, m: 1 }} color="inherit">
             Limpar
@@ -285,7 +241,7 @@ export const AnnualExpenses = (props) => {
   );
 };
 
-AnnualExpenses.propTypes = {
+ExpensesByState.propTypes = {
   data: PropTypes.array,
   sx: PropTypes.object,
 };

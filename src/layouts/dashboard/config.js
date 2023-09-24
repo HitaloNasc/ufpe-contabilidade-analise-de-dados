@@ -20,11 +20,20 @@ export const items = [
     ),
   },
   {
-    title: "Despesas por categoria",
+    title: "Despesas por ano",
     path: "/annual-expenses",
     icon: (
       <SvgIcon fontSize="small">
-        <ShoppingBagIcon />
+        <ChartBarIcon />
+      </SvgIcon>
+    ),
+  },
+  {
+    title: "Despesas por estado",
+    path: "/expenses-by-state",
+    icon: (
+      <SvgIcon fontSize="small">
+        <ChartBarIcon />
       </SvgIcon>
     ),
   },
