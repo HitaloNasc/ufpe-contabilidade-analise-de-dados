@@ -206,7 +206,7 @@ export const Metrics = (props) => {
       </Card>
       <Card sx={{ ...sx, mb: 5 }}>
         <CardHeader
-          title="Taxa de Pagamento"
+          title="Taxa de pagamento"
           subheader="Compara as despesas liquidadas com as liquidadas pagas"
         />
         <CardContent>
