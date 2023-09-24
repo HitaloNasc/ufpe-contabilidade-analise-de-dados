@@ -139,9 +139,6 @@ const Page = () => (
               sx={{ height: "100%" }}
             />
           </Grid>
-          <Grid xs={12} md={12} lg={12}>
-            <Table data={data} />
-          </Grid>
         </Grid>
       </Container>
     </Box>

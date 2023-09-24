@@ -20,17 +20,8 @@ export const items = [
     ),
   },
   {
-    title: "Tabela",
-    path: "/table",
-    icon: (
-      <SvgIcon fontSize="small">
-        <TableCellsIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Companies",
-    path: "/companies",
+    title: "Despesas por categoria",
+    path: "/annual-expenses",
     icon: (
       <SvgIcon fontSize="small">
         <ShoppingBagIcon />
@@ -38,47 +29,11 @@ export const items = [
     ),
   },
   {
-    title: "Account",
-    path: "/account",
+    title: "Tabela",
+    path: "/table",
     icon: (
       <SvgIcon fontSize="small">
-        <UserIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Settings",
-    path: "/settings",
-    icon: (
-      <SvgIcon fontSize="small">
-        <CogIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Login",
-    path: "/auth/login",
-    icon: (
-      <SvgIcon fontSize="small">
-        <LockClosedIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Register",
-    path: "/auth/register",
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserPlusIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Error",
-    path: "/404",
-    icon: (
-      <SvgIcon fontSize="small">
-        <XCircleIcon />
+        <TableCellsIcon />
       </SvgIcon>
     ),
   },
