@@ -22,7 +22,7 @@ export const Presentation = (props) => {
         <Grid container spacing={3} sx={{ mb: 2 }}>
           <Grid xs={6}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <Image src="/assets/ufpe.png" alt="ufpe_logo" width={300} height={150} />
+              <Image src="/assets/ufpe.png" alt="ufpe_logo" width={200} height={100} />
             </Box>
           </Grid>
           <Grid xs={6}>
@@ -34,7 +34,7 @@ export const Presentation = (props) => {
                 height: "100%",
               }}
             >
-              <Image src="/assets/cin.png" alt="cin_logo" width={300} height={100} />
+              <Image src="/assets/cin.png" alt="cin_logo" width={200} height={70} />
             </Box>
           </Grid>
         </Grid>
@@ -70,8 +70,8 @@ export const Presentation = (props) => {
                 height: "100%",
               }}
             >
-              <Image src="/assets/avatars/carol.jpeg" width={100} height={100} />
-              <Typography variant="subtitle1" sx={{ textAlign: "center" }}>
+              <Image src="/assets/avatars/carol.jpeg" width={70} height={70} />
+              <Typography variant="subtitle2" sx={{ textAlign: "center" }}>
                 Caroline Almeida de Freitas
               </Typography>
             </Box>
@@ -85,8 +85,8 @@ export const Presentation = (props) => {
                 height: "100%",
               }}
             >
-              <Image src="/assets/avatars/douglas.png" width={100} height={100} />
-              <Typography variant="subtitle1" sx={{ textAlign: "center" }}>
+              <Image src="/assets/avatars/douglas.png" width={70} height={70} />
+              <Typography variant="subtitle2" sx={{ textAlign: "center" }}>
                 Douglas Araujo Silva
               </Typography>
             </Box>
@@ -100,8 +100,8 @@ export const Presentation = (props) => {
                 height: "100%",
               }}
             >
-              <Image src="/assets/avatars/hitalo.jpeg" width={100} height={100} />
-              <Typography variant="subtitle1" sx={{ textAlign: "center" }}>
+              <Image src="/assets/avatars/hitalo.jpeg" width={70} height={70} />
+              <Typography variant="subtitle2" sx={{ textAlign: "center" }}>
                 Hítalo Bruno de Azevedo Nascimento
               </Typography>
             </Box>
@@ -115,8 +115,8 @@ export const Presentation = (props) => {
                 height: "100%",
               }}
             >
-              <Image src="/assets/avatars/ingrid.jpeg" width={100} height={100} />
-              <Typography variant="subtitle1" sx={{ textAlign: "center" }}>
+              <Image src="/assets/avatars/ingrid.jpeg" width={70} height={70} />
+              <Typography variant="subtitle2" sx={{ textAlign: "center" }}>
                 Ingrid Adriana Freire Soares Lima
               </Typography>
             </Box>
@@ -130,8 +130,8 @@ export const Presentation = (props) => {
                 height: "100%",
               }}
             >
-              <Image src="/assets/avatars/otavio.jpeg" width={100} height={100} />
-              <Typography variant="subtitle1" sx={{ textAlign: "center" }}>
+              <Image src="/assets/avatars/otavio.jpeg" width={70} height={70} />
+              <Typography variant="subtitle2" sx={{ textAlign: "center" }}>
                 Otávio Algusto Cavalcanti Neto
               </Typography>
             </Box>
