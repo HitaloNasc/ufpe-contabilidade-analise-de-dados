@@ -156,6 +156,20 @@ export const Metrics = (props) => {
     return (paidExpenses / liquidatedExpenses) * 100;
   };
 
+  const getCommitedVsPaid = (account) => {
+    const filteredByAccount = filteredData.filter((row) => row.cod_conta === account);
+    const paidExpenses = filteredByAccount
+      .filter((row) => row.tipo === "Despesas Pagas")
+      .map((row) => convertToNumber(row.valor))
+      .reduce((acc, c) => acc + c, 0);
+    const liquidatedExpenses = filteredByAccount
+      .filter((row) => row.tipo === "Despesas Empenhadas")
+      .map((row) => convertToNumber(row.valor))
+      .reduce((acc, c) => acc + c, 0);
+    return (paidExpenses / liquidatedExpenses) * 100;
+  };
+
+
   const execution = [
     {
       name: "Taxa de execução",
@@ -166,6 +180,12 @@ export const Metrics = (props) => {
     {
       name: "Taxa de pagamento",
       data: [getPaidRate("08"), getPaidRate("09"), getPaidRate("10")],
+    },
+  ];
+  const commitedVsPaid = [
+    {
+      name: "Despesas empenhadas x Despesas pagas",
+      data: [getCommitedVsPaid("08"), getCommitedVsPaid("09"), getCommitedVsPaid("10")],
     },
   ];
 
@@ -211,6 +231,15 @@ export const Metrics = (props) => {
         />
         <CardContent>
           <Chart height={350} options={chartOptions} series={paid} type="bar" width="100%" />
+        </CardContent>
+        <Divider />
+      </Card>
+      <Card sx={{ ...sx, mb: 5 }}>
+        <CardHeader
+          title="Despesas empenhadas x Despesas pagas"
+        />
+        <CardContent>
+          <Chart height={350} options={chartOptions} series={commitedVsPaid} type="bar" width="100%" />
         </CardContent>
         <Divider />
       </Card>
